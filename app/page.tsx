@@ -103,6 +103,17 @@ function ProjectVisual({ project, compact = false }: { project: Project; compact
     );
   }
 
+  if (project.visual === "crm") {
+    return (
+      <div className={`project-cover system-cover crm-cover ${compact ? "is-compact" : ""}`} aria-label="Private dealership system architecture illustration">
+        <div className="cover-label"><span>DEALERSHIP OPERATIONS</span><b>PRIVATE APPLICATION</b></div>
+        <div className="crm-core" aria-hidden="true"><small>CONTROLLED WORKSPACE</small><strong>FALCON CRM</strong><span>Arabic · English</span></div>
+        <div className="crm-modules" aria-hidden="true"><span>CUSTOMERS</span><span>VEHICLES</span><span>FINANCE</span><span>TRANSACTIONS</span><span>DOCUMENTS</span><span>SEARCH / EXPORT</span></div>
+        <div className="crm-lock" aria-hidden="true"><i /><span>PRIVATE RECORDS</span></div>
+      </div>
+    );
+  }
+
   if (project.visual === "security") {
     return (
       <div className={`project-cover system-cover security-cover ${compact ? "is-compact" : ""}`} aria-label="Cybersecurity control layers illustration">
@@ -244,7 +255,7 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
       </section>
 
       <section className="proof-strip" aria-label="Scope of work">
-        <div><strong>04</strong><span>Verified public<br />deployments</span></div>
+        <div><strong>03</strong><span>Verified public<br />deployments</span></div>
         <div><strong>PROD</strong><span>Private systems &<br />environments</span></div>
         <div><strong>EN / AR</strong><span>Multilingual<br />products</span></div>
         <div><strong>UAE</strong><span>Enterprise &<br />regional context</span></div>

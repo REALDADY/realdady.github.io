@@ -195,7 +195,7 @@ export const projects: Project[] = [
       "A bilingual private dealership application controlling customer, vehicle, finance, transaction and document workflows.",
     category: "Enterprise Systems",
     projectType: "Private Business Application · CRM · Operations",
-    status: "Private Workspace / Public Entry",
+    status: "Private Business Application",
     statusKind: "private",
     featured: true,
     role: "Application design · Development · Workflow architecture",
@@ -210,9 +210,6 @@ export const projects: Project[] = [
       "Excel export",
       "Arabic / English support",
     ],
-    liveUrl: "https://falcon-crm-xi.vercel.app/",
-    coverAsset: "/projects/falcon-crm.png",
-    coverAlt: "Falcon CRM secure dealership workspace entry",
     visual: "crm",
     challenge:
       "Give dealership staff one controlled system for customer, vehicle, cash, finance and document records without exposing operational data publicly.",
@@ -221,7 +218,7 @@ export const projects: Project[] = [
     solution:
       "A private dealership management application covering customers, vehicles, cash and loan sales, supporting documents, record search, export and Arabic / English operation.",
     statusNote:
-      "The public link opens the protected product entry. Operational records and application access remain private.",
+      "This is a private business application. No public deployment or application entry is linked from the portfolio.",
   },
   {
     index: "06",

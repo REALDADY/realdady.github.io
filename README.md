@@ -9,7 +9,7 @@ transformation case studies.
 - `app/project-data.ts` — reusable project, status and case-study data
 - `app/page.tsx` — homepage, full work index and case-study interactions
 - `app/globals.css` — responsive design, architecture visuals and motion
-- `public/projects/` — verified captures of the four public deployments
+- `public/projects/` — verified captures of the public deployments shown in the portfolio
 - `app/work/page.tsx` — Sites-compatible full-work route
 
 The Vercel deployment uses the static Vite build. The vinext build remains

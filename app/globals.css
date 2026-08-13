@@ -196,6 +196,16 @@ main::before { content: ""; position: fixed; z-index: 300; top: 0; left: 0; widt
 .event-stream i { z-index: 1; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px var(--accent); }
 .event-stream span { z-index: 1; padding: 0 8px; color: rgba(255,255,255,.55); background: #111b25; font-family: var(--font-geist-mono), monospace; font-size: 7px; letter-spacing: .08em; }
 
+.crm-cover { background-color: #191713; background-image: radial-gradient(circle at 48% 55%,rgba(181,138,39,.18),transparent 32%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px); background-size: auto,44px 44px,44px 44px; }
+.crm-core { position: absolute; left: 7%; top: 31%; width: 31%; min-height: 145px; display: flex; flex-direction: column; justify-content: center; padding: 20px; border: 1px solid rgba(215,255,67,.5); background: rgba(18,15,11,.76); }
+.crm-core small { color: rgba(255,255,255,.46); font-family: var(--font-geist-mono),monospace; font-size: 7px; letter-spacing: .1em; }
+.crm-core strong { margin: 21px 0 7px; color: var(--accent); font-family: var(--display); font-size: 31px; font-weight: 400; }
+.crm-core span { color: rgba(255,255,255,.5); font-size: 8px; }
+.crm-modules { position: absolute; top: 28%; right: 7%; width: 46%; display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.crm-modules span { padding: 13px 10px; border: 1px solid rgba(255,255,255,.16); background: rgba(17,15,12,.68); font-family: var(--font-geist-mono),monospace; font-size: 7px; letter-spacing: .08em; }
+.crm-lock { position: absolute; right: 7%; bottom: 12%; display: flex; align-items: center; gap: 9px; color: rgba(255,255,255,.5); font-family: var(--font-geist-mono),monospace; font-size: 7px; letter-spacing: .1em; }
+.crm-lock i { width: 7px; height: 7px; border-radius: 50%; background: #a78349; box-shadow: 0 0 0 4px rgba(167,131,73,.12); }
+
 .security-cover { background-color: #15151c; background-image: radial-gradient(circle at 50% 58%,rgba(94,67,181,.2),transparent 33%),linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px); background-size: auto,45px 45px,45px 45px; }
 .security-rings { position: absolute; left: 20%; top: 23%; width: 240px; aspect-ratio: 1; display: grid; place-items: center; border: 1px solid rgba(215,255,67,.55); border-radius: 50%; }
 .security-rings i { position: absolute; inset: 15%; border: 1px solid rgba(255,255,255,.2); border-radius: 50%; }
@@ -278,6 +288,11 @@ main::before { content: ""; position: fixed; z-index: 300; top: 0; left: 0; widt
 .work-row-visual .delivery-lanes > div { min-height: 55px; padding: 6px; }
 .work-row-visual .delivery-lanes strong { margin: 6px 0 2px; font-size: 7px; }
 .work-row-visual .event-stream { display: none; }
+.work-row-visual .crm-core { left: 4%; top: 34%; width: 38%; min-height: 100px; padding: 9px; }
+.work-row-visual .crm-core strong { margin: 11px 0 4px; font-size: 17px; }
+.work-row-visual .crm-modules { top: 30%; right: 4%; width: 48%; gap: 3px; }
+.work-row-visual .crm-modules span { padding: 6px 4px; font-size: 5px; }
+.work-row-visual .crm-lock { display: none; }
 .work-row-visual .security-rings { left: 6%; top: 27%; width: 135px; }
 .work-row-visual .security-controls { right: 4%; top: 30%; width: 43%; gap: 3px; }
 .work-row-visual .security-controls span { padding: 5px; font-size: 5px; }
