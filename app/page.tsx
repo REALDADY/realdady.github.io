@@ -113,11 +113,43 @@ const capabilities = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [dubaiTime, setDubaiTime] = useState("");
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const updateClock = () => {
+      setDubaiTime(
+        new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Asia/Dubai",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).format(new Date()),
+      );
+    };
+
+    const onScroll = () => {
+      setScrolled(window.scrollY > 40);
+      const maximum = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = maximum > 0 ? window.scrollY / maximum : 0;
+      document.documentElement.style.setProperty("--scroll-progress", String(progress));
+
+      document.querySelectorAll<HTMLElement>(".project-visual").forEach((visual) => {
+        const rect = visual.getBoundingClientRect();
+        const distance = (rect.top + rect.height / 2 - window.innerHeight / 2) / window.innerHeight;
+        visual.style.setProperty("--parallax", `${Math.max(-24, Math.min(24, distance * -22))}px`);
+      });
+    };
+
+    const onPointerMove = (event: PointerEvent) => {
+      document.documentElement.style.setProperty("--pointer-x", `${event.clientX}px`);
+      document.documentElement.style.setProperty("--pointer-y", `${event.clientY}px`);
+    };
+
+    updateClock();
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("pointermove", onPointerMove, { passive: true });
+    const clock = window.setInterval(updateClock, 30000);
 
     const revealObserver = new IntersectionObserver(
       (entries) => {
@@ -131,14 +163,33 @@ export default function Home() {
 
     return () => {
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("pointermove", onPointerMove);
+      window.clearInterval(clock);
       revealObserver.disconnect();
     };
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
+  const tiltProject = (event: React.PointerEvent<HTMLAnchorElement>) => {
+    if (window.matchMedia("(pointer: coarse), (prefers-reduced-motion: reduce)").matches) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    event.currentTarget.style.setProperty("--tilt-x", `${y * -3.2}deg`);
+    event.currentTarget.style.setProperty("--tilt-y", `${x * 4.2}deg`);
+    event.currentTarget.style.setProperty("--shine-x", `${(x + 0.5) * 100}%`);
+    event.currentTarget.style.setProperty("--shine-y", `${(y + 0.5) * 100}%`);
+  };
+
+  const resetProjectTilt = (event: React.PointerEvent<HTMLAnchorElement>) => {
+    event.currentTarget.style.setProperty("--tilt-x", "0deg");
+    event.currentTarget.style.setProperty("--tilt-y", "0deg");
+  };
+
   return (
     <main>
+      <div className="pointer-glow" aria-hidden="true" />
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
         <a className="wordmark" href="#top" aria-label="Amin — home" onClick={closeMenu}>
           <span>AM</span>
@@ -154,6 +205,7 @@ export default function Home() {
         </nav>
 
         <div className="header-actions">
+          <span className="dubai-clock"><i>DXB</i>{dubaiTime || "GMT+4"}</span>
           <span className="availability"><i /> Available for select projects</span>
           <button
             className="menu-button"
@@ -202,6 +254,20 @@ export default function Home() {
         <div><strong>UAE</strong><span>Built for regional<br />business realities</span></div>
       </section>
 
+      <section className="motion-marquee" aria-label="Areas of expertise">
+        <div className="motion-marquee-track">
+          {[0, 1].map((group) => (
+            <div key={group} aria-hidden={group === 1}>
+              <span>Product engineering</span><i>✦</i>
+              <span>Secure systems</span><i>✦</i>
+              <span>Commerce platforms</span><i>✦</i>
+              <span>Digital experiences</span><i>✦</i>
+              <span>Built for production</span><i>✦</i>
+            </div>
+          ))}
+        </div>
+      </section>
+
       <section className="work-intro section-shell" id="work">
         <div className="section-label reveal-up" data-reveal>
           <span>01</span>
@@ -243,6 +309,8 @@ export default function Home() {
                 className="project-visual reveal-up"
                 data-reveal
                 aria-label={`Open ${project.title} live project`}
+                onPointerMove={tiltProject}
+                onPointerLeave={resetProjectTilt}
               >
                 <div className="browser-chrome">
                   <span><i /><i /><i /></span>
@@ -250,6 +318,7 @@ export default function Home() {
                   <b>LIVE ↗</b>
                 </div>
                 <img src={project.image} alt={project.imageAlt} />
+                <span className="visual-badge"><i /> Case study {project.index}</span>
                 <div className="visual-sheen" />
               </a>
 
