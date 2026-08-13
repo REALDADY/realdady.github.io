@@ -157,13 +157,13 @@ export const projects: Project[] = [
     title: "HAAK Solutions",
     shortTitle: "HAAK Solutions",
     shortDescription:
-      "A software and IT solutions practice spanning products, enterprise systems, web applications and premium digital experiences.",
+      "A bold, responsive brand experience translating a broad technology practice into a clear and energetic digital presence.",
     category: "Products",
     projectType: "Software Products · IT Solutions · Digital Transformation",
     status: "Public Website / Solutions Practice",
     statusKind: "live",
     featured: true,
-    role: "Software products · Digital experience · IT solutions",
+    role: "Web design · Creative development · Interactive direction",
     technologies: ["React", "Vite", "Web applications", "Enterprise systems", "Responsive design"],
     capabilities: [
       "Software products",
@@ -326,13 +326,13 @@ export const projects: Project[] = [
     title: "Sahaba Water",
     shortTitle: "Sahaba Water",
     shortDescription:
-      "A bilingual direct-to-consumer storefront with product discovery, quantities, cart flows and customer account access.",
+      "A polished bilingual storefront balancing atmospheric brand design with practical product, cart and account journeys.",
     category: "Web",
     projectType: "Public Website · Bilingual Commerce",
     status: "Live Product",
     statusKind: "live",
     featured: false,
-    role: "Frontend development · Commerce UX",
+    role: "Web design · Frontend development · Commerce UX",
     technologies: ["React", "Product catalogue", "Cart flows", "Google Identity", "Arabic / English"],
     capabilities: ["Product catalogue", "Quantity controls", "Cart", "Customer access", "Responsive commerce", "Bilingual UI"],
     liveUrl: "https://sahaba-frontend.vercel.app/",
@@ -353,13 +353,13 @@ export const projects: Project[] = [
     title: "Alrawdah Springs Public Commerce Website",
     shortTitle: "Alrawdah Springs Web",
     shortDescription:
-      "A multilingual commerce and content platform supporting products, accounts, delivery information, order journeys and regional discovery.",
+      "A high-contrast multilingual commerce experience shaped around product storytelling, buying journeys and UAE-wide delivery.",
     category: "Web",
     projectType: "Public Website · Commerce · SEO",
     status: "Public Website",
     statusKind: "live",
     featured: false,
-    role: "Web platform · Technical SEO · Conversion",
+    role: "Web design · Commerce UX · Technical SEO · Conversion",
     technologies: ["Custom commerce", "Cloudflare", "Technical SEO", "Structured data", "Consent-managed analytics"],
     capabilities: ["Catalogue and cart", "Customer accounts", "Order tracking", "Regional landing pages", "Arabic / English", "Performance and conversion"],
     liveUrl: "https://rswater.ae/",
@@ -410,7 +410,18 @@ export const projects: Project[] = [
   },
 ];
 
-export const featuredProjects = projects.filter((project) => project.featured);
+const featuredProjectOrder = [
+  "alrawdah-public-commerce-website",
+  "sahaba-water",
+  "haak-solutions",
+  "alrawdah-digital-commerce-platform",
+  "falcon-crm",
+  "infrastructure-disaster-recovery-transformation",
+];
+
+export const featuredProjects = featuredProjectOrder
+  .map((slug) => projects.find((project) => project.slug === slug))
+  .filter((project): project is Project => Boolean(project));
 
 export const projectCategories: Array<"All" | ProjectCategory> = [
   "All",

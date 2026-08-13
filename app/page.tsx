@@ -12,12 +12,19 @@ import {
 type View = "home" | "work";
 
 const capabilities = [
-  ["01", "Software & product engineering", "Mobile products, web platforms and operational applications shaped around real business workflows."],
-  ["02", "Enterprise systems & ERP", "Business systems, SAP / HANA, reporting and process improvements across operational teams."],
-  ["03", "Infrastructure & resilience", "Virtualization, identity, networks, backup and disaster recovery designed as one operating environment."],
-  ["04", "Cybersecurity hardening", "Layered identity, endpoint, policy and audit controls introduced through staged enterprise deployment."],
-  ["05", "Commerce & automation", "Customer journeys, payments, accounts, delivery, integrations and administration across mobile and web."],
-  ["06", "Digital transformation", "Connecting product, process and technology decisions into systems that businesses can actually operate."],
+  ["01", "Web design & art direction", "Distinct visual systems, typography, composition and brand expression shaped for the screen."],
+  ["02", "Interface systems & UX", "Clear journeys, reusable components and interaction patterns designed around real user goals."],
+  ["03", "Creative front-end development", "Responsive interfaces translated into polished, performant web experiences with purposeful motion."],
+  ["04", "Commerce & conversion", "Product discovery, accounts, carts, payments and content designed as one coherent customer experience."],
+  ["05", "Multilingual responsive design", "English and Arabic experiences considered across hierarchy, layout, content and device behavior."],
+  ["06", "Product & systems thinking", "Design decisions grounded in backend realities, integrations, operations and long-term maintainability."],
+];
+
+const designPractice = [
+  ["01", "Direction", "A clear visual idea, not a borrowed template.", "Mood · Type · Composition"],
+  ["02", "Structure", "Hierarchy and journeys that make complex products feel simple.", "UX · Content · Systems"],
+  ["03", "Interaction", "Motion and feedback that create rhythm without stealing attention.", "Motion · States · Detail"],
+  ["04", "Build", "Responsive implementation where the final browser experience protects the design.", "React · Performance · QA"],
 ];
 
 const publicSurfaceProjects = [
@@ -250,7 +257,7 @@ function SiteHeader({ view, menuOpen, scrolled, dubaiTime, onMenu, onHome, onWor
   return (
     <header className={`site-header ${scrolled || view === "work" ? "is-scrolled" : ""}`}>
       <a className="wordmark" href="/" aria-label="Amin — home" onClick={(event) => { event.preventDefault(); onHome(); }}>
-        <span>AM</span><i /><small>Systems &<br />software</small>
+        <span>AM</span><i /><small>Design &<br />development</small>
       </a>
       <nav className={menuOpen ? "is-open" : ""} aria-label="Primary navigation">
         <a href="/work" onClick={(event) => { event.preventDefault(); onWork(); }}>Work</a>
@@ -271,10 +278,10 @@ function ContactFooter() {
   return (
     <footer className="contact" id="contact">
       <div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div>
-      <div className="contact-top reveal-up" data-reveal><span>Business-critical technology, thoughtfully built.</span><span>Let’s make it real.</span></div>
+      <div className="contact-top reveal-up" data-reveal><span>Distinctive digital experiences, thoughtfully built.</span><span>Let’s make it real.</span></div>
       <a className="contact-title reveal-up" data-reveal href="mailto:info@Haak-org.com">Start a<br /><em>conversation.</em><b>↗</b></a>
       <div className="contact-bottom">
-        <div className="contact-identity"><strong>Amin</strong><span>Software · Enterprise IT · Digital Transformation</span></div>
+        <div className="contact-identity"><strong>Amin</strong><span>Web Design · Creative Development · Product Systems</span></div>
         <div className="contact-links"><a href="mailto:info@Haak-org.com">Email ↗</a><a href="https://wa.me/971551686040" target="_blank" rel="noreferrer">WhatsApp ↗</a><a href="#top">Back to top ↑</a></div>
         <p>Dubai, UAE<br />© {new Date().getFullYear()}</p>
       </div>
@@ -287,28 +294,28 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
     <>
       <section className="hero" id="top">
         <div className="hero-grid" aria-hidden="true" />
-        <div className="hero-kicker reveal-up" data-reveal><span>Software engineering</span><span>Enterprise IT</span><span>Digital transformation</span></div>
+        <div className="hero-kicker reveal-up" data-reveal><span>Web design</span><span>Creative development</span><span>Product experience</span></div>
         <HeroProjectShowcase />
-        <h1 className="hero-title reveal-up" data-reveal>Business-critical<span>systems, <em>built well.</em></span></h1>
+        <h1 className="hero-title reveal-up" data-reveal>Web experiences,<span><em>designed</em> to work.</span></h1>
         <div className="hero-bottom reveal-up" data-reveal>
-          <p>I design, build and transform the technology businesses rely on—from mobile products and ERP workflows to infrastructure, security and digital commerce.</p>
+          <p>I design and build expressive, responsive websites and product interfaces—combining visual direction, interaction, frontend craft and serious systems thinking.</p>
           <a className="round-link" href="#work" aria-label="Explore selected work"><span>Explore<br />the work</span><b>↓</b></a>
         </div>
-        <div className="hero-orbit" aria-hidden="true"><span className="orbit-dot" /><span className="orbit-label">Product × Systems × Infrastructure</span></div>
+        <div className="hero-orbit" aria-hidden="true"><span className="orbit-dot" /><span className="orbit-label">Design × Interaction × Development</span></div>
       </section>
 
       <section className="proof-strip" aria-label="Scope of work">
-        <div><strong>03</strong><span>Verified public<br />deployments</span></div>
-        <div><strong>PROD</strong><span>Private systems &<br />environments</span></div>
-        <div><strong>EN / AR</strong><span>Multilingual<br />products</span></div>
-        <div><strong>UAE</strong><span>Enterprise &<br />regional context</span></div>
+        <div><strong>03</strong><span>Live web<br />experiences</span></div>
+        <div><strong>UI / UX</strong><span>Interface systems &<br />interaction design</span></div>
+        <div><strong>EN / AR</strong><span>Multilingual<br />responsive design</span></div>
+        <div><strong>DXB</strong><span>Design & development<br />from Dubai</span></div>
       </section>
 
-      <section className="motion-marquee" aria-label="Areas of expertise"><div className="motion-marquee-track">{[0, 1].map((group) => <div key={group} aria-hidden={group === 1}><span>Software engineering</span><i>✦</i><span>Enterprise systems</span><i>✦</i><span>Infrastructure</span><i>✦</i><span>Cybersecurity</span><i>✦</i><span>ERP / SAP</span><i>✦</i><span>Mobile products</span><i>✦</i></div>)}</div></section>
+      <section className="motion-marquee" aria-label="Areas of expertise"><div className="motion-marquee-track">{[0, 1].map((group) => <div key={group} aria-hidden={group === 1}><span>Art direction</span><i>✦</i><span>Interface design</span><i>✦</i><span>Responsive web</span><i>✦</i><span>Creative development</span><i>✦</i><span>Motion systems</span><i>✦</i><span>Commerce UX</span><i>✦</i></div>)}</div></section>
 
       <section className="work-intro section-shell" id="work">
         <div className="section-label reveal-up" data-reveal><span>01</span><p>Selected work</p></div>
-        <div className="work-heading reveal-up" data-reveal><h2>Systems with real responsibility.</h2><p>Public products are only one part of the story. This work also spans private platforms, production infrastructure, ERP, cybersecurity and enterprise transformation.</p></div>
+        <div className="work-heading reveal-up" data-reveal><h2>Interfaces with intent.</h2><p>Selected websites and product experiences where visual identity, usability and implementation work together. Deeper platform and systems work remains part of the story.</p></div>
       </section>
 
       <section className="featured-work section-shell" aria-label="Featured case studies">
@@ -322,39 +329,36 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
         <button type="button" className="all-work-cta reveal-up" data-reveal onClick={onViewAll}><span>Explore the broader portfolio</span><strong>View all work</strong><i>→</i></button>
       </section>
 
-      <section className="live-surfaces section-shell" aria-label="Public product surfaces">
-        <div className="section-label reveal-up" data-reveal><span>LIVE</span><p>Public product surfaces</p></div>
-        <div className="live-surfaces-heading reveal-up" data-reveal>
-          <h2>Real work,<br /><em>in the wild.</em></h2>
-          <p>Three public deployments provide a direct view into the interface craft, responsive execution and product thinking behind the broader systems work.</p>
+      <section className="design-practice section-shell" aria-label="Design practice">
+        <div className="section-label reveal-up" data-reveal><span>02</span><p>Design practice</p></div>
+        <div className="design-practice-heading reveal-up" data-reveal>
+          <p>From first impression<br />to final interaction.</p>
+          <h2>Visual clarity with<br /><em>technical depth.</em></h2>
         </div>
-        <div className="surface-grid">
-          {publicSurfaceProjects.map((project, index) => (
-            <a className={`surface-card surface-card-${index + 1} reveal-up`} data-reveal href={project.liveUrl} target="_blank" rel="noreferrer" key={project.slug}>
-              <div className="surface-browser">
-                <div className="surface-browser-bar"><span><i /><i /><i /></span><small>{project.liveUrl?.replace("https://", "").replace(/\/$/, "")}</small><b>LIVE ↗</b></div>
-                <img src={project.coverAsset} alt={project.coverAlt ?? `${project.shortTitle} public website`} />
-              </div>
-              <div className="surface-copy"><span>0{index + 1} · {project.category}</span><h3>{project.shortTitle}</h3><p>{project.shortDescription}</p><i>Open live project ↗</i></div>
-            </a>
+        <div className="design-practice-grid">
+          {designPractice.map(([number, title, description, detail]) => (
+            <article className="practice-card reveal-up" data-reveal key={number}>
+              <span>{number}</span><i aria-hidden="true" /><h3>{title}</h3><p>{description}</p><small>{detail}</small>
+            </article>
           ))}
         </div>
+        <div className="design-type-band reveal-up" data-reveal aria-hidden="true"><span>Hierarchy</span><i>×</i><span>Rhythm</span><i>×</i><span>Motion</span><i>×</i><span>Response</span></div>
       </section>
 
       <section className="about section-shell" id="about">
-        <div className="section-label light reveal-up" data-reveal><span>02</span><p>How I work</p></div>
-        <div className="about-copy reveal-up" data-reveal><p className="eyebrow">Business context. Technical depth. Operational reality.</p><h2>I work where software, infrastructure and business operations <em>meet.</em></h2></div>
-        <div className="about-detail reveal-up" data-reveal><p>The work is deliberately broad because real transformation rarely stays inside one discipline. A mobile ordering product can depend on identity, payments, delivery operations, backend data and future ERP integration.</p><p>I translate that complexity into systems that are understandable, controlled and appropriate for the environment—whether the output is public, private, internal or production infrastructure.</p></div>
+        <div className="section-label light reveal-up" data-reveal><span>03</span><p>How I work</p></div>
+        <div className="about-copy reveal-up" data-reveal><p className="eyebrow">Visual character. Product clarity. Technical reality.</p><h2>I work where identity, interaction and product logic <em>meet.</em></h2></div>
+        <div className="about-detail reveal-up" data-reveal><p>A strong website is more than a polished first screen. It needs a point of view, a coherent design system, clear journeys and responsive behavior that feels considered at every size.</p><p>Because I also build the technology underneath, design decisions stay grounded in performance, content, integrations and the realities of a working product—not just a static composition.</p></div>
       </section>
 
       <section className="capabilities section-shell" id="capabilities">
-        <div className="section-label reveal-up" data-reveal><span>03</span><p>Capabilities demonstrated</p></div>
+        <div className="section-label reveal-up" data-reveal><span>04</span><p>Capabilities demonstrated</p></div>
         <div className="capability-list">{capabilities.map(([number, title, description]) => <div className="capability reveal-up" data-reveal key={number}><span>{number}</span><h3>{title}</h3><p>{description}</p><i>↗</i></div>)}</div>
       </section>
 
       <section className="stack-section section-shell">
-        <div className="section-label reveal-up" data-reveal><span>04</span><p>Working landscape</p></div>
-        <div className="stack-layout reveal-up" data-reveal><h2>Broad scope.<br /><em>One systems view.</em></h2><div className="stack-groups"><div><span>Software</span><p>React · Next.js · Mobile applications · APIs · PostgreSQL · Supabase · Authentication</p></div><div><span>Enterprise</span><p>SAP Business One · SAP HANA · SQL reporting · HRMS · Business process design</p></div><div><span>Infrastructure</span><p>Proxmox · Windows Server · Active Directory · FortiGate · VLANs · VPN · Backup · DR</p></div><div><span>Delivery</span><p>Vercel · Cloudflare · Integrations · Technical SEO · Performance · Security hardening</p></div></div></div>
+        <div className="section-label reveal-up" data-reveal><span>05</span><p>Working landscape</p></div>
+        <div className="stack-layout reveal-up" data-reveal><h2>Design vision.<br /><em>Production detail.</em></h2><div className="stack-groups"><div><span>Design</span><p>Art direction · Typography · Layout systems · UI/UX · Responsive design · Prototyping</p></div><div><span>Interaction</span><p>Motion language · Micro-interactions · Component states · Navigation · Feedback · Accessibility</p></div><div><span>Development</span><p>React · Next.js · APIs · PostgreSQL · Supabase · Authentication · Mobile products</p></div><div><span>Delivery</span><p>Vercel · Cloudflare · Technical SEO · Performance · Analytics · Security · Integrations</p></div></div></div>
       </section>
       <ContactFooter />
     </>
@@ -366,8 +370,8 @@ function WorkView({ category, onCategory, openCaseStudy }: { category: "All" | P
   return (
     <div className="work-page" id="top">
       <section className="work-page-hero section-shell">
-        <div className="section-label reveal-up" data-reveal><span>WORK</span><p>Public products · Private systems · Enterprise programs</p></div>
-        <div className="work-page-title reveal-up" data-reveal><p>Selected systems and transformation work across software, mobile, enterprise IT, infrastructure, cybersecurity and ERP.</p><h1>A wider view<br />of the <em>work.</em></h1></div>
+        <div className="section-label reveal-up" data-reveal><span>WORK</span><p>Web experiences · Products · Private systems</p></div>
+        <div className="work-page-title reveal-up" data-reveal><p>A complete view of the websites, product interfaces and deeper systems work—each presented according to its real public, private or production status.</p><h1>The work,<br /><em>in full.</em></h1></div>
       </section>
       <section className="work-index section-shell">
         <div className="work-filters" role="group" aria-label="Filter projects">{projectCategories.map((item) => <button type="button" key={item} className={category === item ? "is-active" : ""} onClick={() => onCategory(item)}>{item}<span>{item === "All" ? projects.length : projects.filter((project) => project.category === item).length}</span></button>)}</div>
