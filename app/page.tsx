@@ -20,6 +20,34 @@ const capabilities = [
   ["06", "Digital transformation", "Connecting product, process and technology decisions into systems that businesses can actually operate."],
 ];
 
+const publicSurfaceProjects = [
+  "alrawdah-public-commerce-website",
+  "sahaba-water",
+  "haak-solutions",
+].map((slug) => projects.find((project) => project.slug === slug)).filter((project): project is Project => Boolean(project?.liveUrl && project.coverAsset));
+
+function HeroProjectShowcase() {
+  return (
+    <div className="hero-showcase" aria-label="Selected live product previews">
+      <div className="showcase-field" aria-hidden="true"><i /><i /><i /></div>
+      {publicSurfaceProjects.map((project, index) => (
+        <a
+          className={`hero-shot hero-shot-${index + 1}`}
+          href={project.liveUrl}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${project.shortTitle} live project`}
+          key={project.slug}
+        >
+          <span className="hero-shot-bar"><i /><b>{project.shortTitle}</b><em>LIVE ↗</em></span>
+          <img src={project.coverAsset} alt="" />
+        </a>
+      ))}
+      <div className="showcase-caption"><span>REAL PRODUCT SURFACES</span><b>03 / LIVE</b></div>
+    </div>
+  );
+}
+
 function StatusPill({ project }: { project: Project }) {
   return <span className={`status-pill status-${project.statusKind}`}><i />{project.status}</span>;
 }
@@ -246,6 +274,7 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
       <section className="hero" id="top">
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-kicker reveal-up" data-reveal><span>Software engineering</span><span>Enterprise IT</span><span>Digital transformation</span></div>
+        <HeroProjectShowcase />
         <h1 className="hero-title reveal-up" data-reveal>Business-critical<span>systems, <em>built well.</em></span></h1>
         <div className="hero-bottom reveal-up" data-reveal>
           <p>I design, build and transform the technology businesses rely on—from mobile products and ERP workflows to infrastructure, security and digital commerce.</p>
@@ -277,6 +306,25 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
           </article>
         ))}
         <button type="button" className="all-work-cta reveal-up" data-reveal onClick={onViewAll}><span>Explore the broader portfolio</span><strong>View all work</strong><i>→</i></button>
+      </section>
+
+      <section className="live-surfaces section-shell" aria-label="Public product surfaces">
+        <div className="section-label reveal-up" data-reveal><span>LIVE</span><p>Public product surfaces</p></div>
+        <div className="live-surfaces-heading reveal-up" data-reveal>
+          <h2>Real work,<br /><em>in the wild.</em></h2>
+          <p>Three public deployments provide a direct view into the interface craft, responsive execution and product thinking behind the broader systems work.</p>
+        </div>
+        <div className="surface-grid">
+          {publicSurfaceProjects.map((project, index) => (
+            <a className={`surface-card surface-card-${index + 1} reveal-up`} data-reveal href={project.liveUrl} target="_blank" rel="noreferrer" key={project.slug}>
+              <div className="surface-browser">
+                <div className="surface-browser-bar"><span><i /><i /><i /></span><small>{project.liveUrl?.replace("https://", "").replace(/\/$/, "")}</small><b>LIVE ↗</b></div>
+                <img src={project.coverAsset} alt={project.coverAlt ?? `${project.shortTitle} public website`} />
+              </div>
+              <div className="surface-copy"><span>0{index + 1} · {project.category}</span><h3>{project.shortTitle}</h3><p>{project.shortDescription}</p><i>Open live project ↗</i></div>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="about section-shell" id="about">

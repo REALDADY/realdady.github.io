@@ -21,6 +21,11 @@ test("renders the professional portfolio homepage", async () => {
   assert.match(html, /Selected work/);
   assert.match(html, /Alrawdah Digital Platform/);
   assert.match(html, /Infrastructure Transformation/);
+  assert.match(html, /Real work,/);
+  assert.match(html, /\/projects\/rs-water\.png/);
+  assert.match(html, /\/projects\/sahaba\.png/);
+  assert.match(html, /\/projects\/haak\.png/);
+  assert.doesNotMatch(html, /falcon-crm-xi|falcon-crm\.png/);
 });
 
 test("renders the full work route", async () => {
