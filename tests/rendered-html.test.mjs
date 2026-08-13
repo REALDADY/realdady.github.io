@@ -18,7 +18,9 @@ test("renders the professional portfolio homepage", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /Web experiences/);
+  assert.match(html, /Websites with/);
+  assert.match(html, /character/);
+  assert.match(html, /Selected live work/);
   assert.match(html, /Selected work/);
   assert.match(html, /Alrawdah Springs Web/);
   assert.match(html, /Infrastructure Transformation/);

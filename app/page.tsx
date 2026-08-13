@@ -48,12 +48,26 @@ function CosmosStage() {
 }
 
 function HeroProjectShowcase() {
+  const [primaryProject, ...supportingProjects] = publicSurfaceProjects;
+  if (!primaryProject) return null;
+
   return (
     <div className="hero-showcase" aria-label="Selected live product previews">
-      <div className="showcase-field" aria-hidden="true"><i /><i /><i /></div>
-      {publicSurfaceProjects.map((project, index) => (
+      <div className="showcase-heading"><span>Selected live work</span><b>03 / 03</b></div>
+      <a
+        className="hero-shot hero-shot-primary"
+        href={primaryProject.liveUrl}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={`Open ${primaryProject.shortTitle} live project`}
+      >
+        <span className="hero-shot-bar"><i /><b>{primaryProject.shortTitle}</b><em>LIVE ↗</em></span>
+        <img src={primaryProject.coverAsset} alt="" />
+      </a>
+      <div className="hero-shot-supporting">
+        {supportingProjects.map((project) => (
         <a
-          className={`hero-shot hero-shot-${index + 1}`}
+          className="hero-shot hero-shot-small"
           href={project.liveUrl}
           target="_blank"
           rel="noreferrer"
@@ -63,8 +77,9 @@ function HeroProjectShowcase() {
           <span className="hero-shot-bar"><i /><b>{project.shortTitle}</b><em>LIVE ↗</em></span>
           <img src={project.coverAsset} alt="" />
         </a>
-      ))}
-      <div className="showcase-caption"><span>REAL PRODUCT SURFACES</span><b>03 / LIVE</b></div>
+        ))}
+      </div>
+      <div className="showcase-caption"><span>Web design · UI/UX · Development</span><b>View live ↗</b></div>
     </div>
   );
 }
@@ -296,12 +311,11 @@ function HomeView({ openCaseStudy, onViewAll }: { openCaseStudy: (project: Proje
         <div className="hero-grid" aria-hidden="true" />
         <div className="hero-kicker reveal-up" data-reveal><span>Web design</span><span>Creative development</span><span>Product experience</span></div>
         <HeroProjectShowcase />
-        <h1 className="hero-title reveal-up" data-reveal>Web experiences,<span><em>designed</em> to work.</span></h1>
+        <h1 className="hero-title reveal-up" data-reveal>Websites with<span><em>character.</em></span></h1>
         <div className="hero-bottom reveal-up" data-reveal>
           <p>I design and build expressive, responsive websites and product interfaces—combining visual direction, interaction, frontend craft and serious systems thinking.</p>
-          <a className="round-link" href="#work" aria-label="Explore selected work"><span>Explore<br />the work</span><b>↓</b></a>
+          <a className="hero-work-link" href="#work" aria-label="Explore selected work"><span>Selected work</span><b>↓</b></a>
         </div>
-        <div className="hero-orbit" aria-hidden="true"><span className="orbit-dot" /><span className="orbit-label">Design × Interaction × Development</span></div>
       </section>
 
       <section className="proof-strip" aria-label="Scope of work">
