@@ -4,5 +4,8 @@
   "buildCommand": "npm run build:vercel",
   "outputDirectory": "vercel-dist",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/work", "destination": "/index.html" }
+  ]
 }

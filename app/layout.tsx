@@ -17,29 +17,32 @@ export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
   const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
   const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og.png`;
+  const socialImage = `${protocol}://${host}/og-systems.png`;
 
   return {
-    title: "Amin — Software Developer & Digital Solutions Builder",
+    title: "Amin — Software, Enterprise IT & Digital Transformation",
     description:
-      "Selected product work spanning secure operational systems, bilingual commerce, digital platforms and production-grade web experiences.",
+      "Selected work across software engineering, mobile products, enterprise systems, infrastructure, cybersecurity, SAP and digital transformation.",
     keywords: [
       "software developer Dubai",
       "digital solutions",
-      "web application development",
+      "enterprise systems",
+      "digital transformation UAE",
+      "SAP Business One HANA",
+      "IT infrastructure",
       "React developer",
       "ecommerce development UAE",
     ],
     openGraph: {
-      title: "Amin — Digital products built to operate.",
-      description: "Secure systems, commerce platforms and production digital products.",
+      title: "Amin — Business-critical systems, built well.",
+      description: "Software, enterprise IT, infrastructure, SAP, cybersecurity and digital transformation.",
       type: "website",
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "Amin — Digital products built to operate" }],
+      images: [{ url: socialImage, width: 1200, height: 630, alt: "Amin — Business-critical systems, built well" }],
     },
     twitter: {
       card: "summary_large_image",
-      title: "Amin — Digital products built to operate.",
-      description: "Secure systems, commerce platforms and production digital products.",
+      title: "Amin — Business-critical systems, built well.",
+      description: "Software, enterprise IT, infrastructure, SAP, cybersecurity and digital transformation.",
       images: [socialImage],
     },
   };
