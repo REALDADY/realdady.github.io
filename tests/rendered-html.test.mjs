@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function render(path = "/") {
@@ -35,4 +36,11 @@ test("renders the full work route", async () => {
   assert.match(html, /A wider view/);
   assert.match(html, /Cybersecurity Hardening/);
   assert.match(html, /HRMS &amp; Attendance/);
+});
+
+test("uses the supplied four-color brand palette", async () => {
+  const css = await readFile(new URL("../app/globals.css", import.meta.url), "utf8");
+  for (const color of ["#ff84ba", "#ffdf82", "#99c2ff", "#ffefe3"]) {
+    assert.match(css.toLowerCase(), new RegExp(color));
+  }
 });
