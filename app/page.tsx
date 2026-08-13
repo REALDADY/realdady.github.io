@@ -26,6 +26,20 @@ const publicSurfaceProjects = [
   "haak-solutions",
 ].map((slug) => projects.find((project) => project.slug === slug)).filter((project): project is Project => Boolean(project?.liveUrl && project.coverAsset));
 
+function CosmosStage() {
+  return (
+    <div className="cosmos-stage" aria-hidden="true">
+      <div className="stars stars-near" />
+      <div className="stars stars-far" />
+      <div className="nebula nebula-pink" />
+      <div className="nebula nebula-blue" />
+      <div className="distant-planet"><i /><span /></div>
+      <div className="shooting-star shooting-star-one" />
+      <div className="shooting-star shooting-star-two" />
+    </div>
+  );
+}
+
 function HeroProjectShowcase() {
   return (
     <div className="hero-showcase" aria-label="Selected live product previews">
@@ -428,6 +442,7 @@ export default function Home({ initialView = "home" }: { initialView?: View }) {
 
   return (
     <main>
+      <CosmosStage />
       <div className="pointer-glow" aria-hidden="true" />
       <SiteHeader view={view} menuOpen={menuOpen} scrolled={scrolled} dubaiTime={dubaiTime} onMenu={() => setMenuOpen((open) => !open)} onHome={() => navigate("home")} onWork={() => navigate("work")} onAnchor={goToAnchor} />
       {view === "home" ? <HomeView openCaseStudy={setSelectedProject} onViewAll={() => navigate("work")} /> : <WorkView category={category} onCategory={setCategory} openCaseStudy={setSelectedProject} />}

@@ -26,6 +26,8 @@ test("renders the professional portfolio homepage", async () => {
   assert.match(html, /\/projects\/rs-water\.png/);
   assert.match(html, /\/projects\/sahaba\.png/);
   assert.match(html, /\/projects\/haak\.png/);
+  assert.match(html, /cosmos-stage/);
+  assert.match(html, /shooting-star/);
   assert.doesNotMatch(html, /falcon-crm-xi|falcon-crm\.png/);
 });
 
@@ -43,4 +45,6 @@ test("uses the supplied four-color brand palette", async () => {
   for (const color of ["#ff84ba", "#ffdf82", "#99c2ff", "#ffefe3"]) {
     assert.match(css.toLowerCase(), new RegExp(color));
   }
+  assert.match(css, /Deep-space visual system/);
+  assert.match(css, /@keyframes starDrift/);
 });
