@@ -31,6 +31,8 @@ jobs:
           VITE_SITE_URL: https://realdady.github.io
       - name: Check the prerendered output
         run: node --test tests/vercel-prerender.test.mjs
+        env:
+          VITE_SITE_URL: https://realdady.github.io
       - uses: actions/upload-pages-artifact@v3
         with:
           path: vercel-dist
