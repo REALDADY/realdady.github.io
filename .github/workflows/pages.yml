@@ -28,11 +28,11 @@ jobs:
       - name: Build the prerendered static site
         run: npm run build:vercel
         env:
-          VITE_SITE_URL: https://realdady.github.io
+          VITE_SITE_URL: https://real3adi.space
       - name: Check the prerendered output
         run: node --test tests/vercel-prerender.test.mjs
         env:
-          VITE_SITE_URL: https://realdady.github.io
+          VITE_SITE_URL: https://real3adi.space
       - uses: actions/upload-pages-artifact@v3
         with:
           path: vercel-dist
