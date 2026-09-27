@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { headers } from "next/headers";
+import type { Metadata, Viewport } from "next";
+import { Geist, Geist_Mono, Instrument_Serif, Unbounded } from "next/font/google";
 import "./globals.css";
+import { absoluteUrl, ogImage, owner, routeSeo, serializeJsonLd, SITE_NAME, SITE_URL, THEME_COLOR } from "./site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -13,48 +13,73 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export async function generateMetadata(): Promise<Metadata> {
-  const requestHeaders = await headers();
-  const host = requestHeaders.get("x-forwarded-host") ?? requestHeaders.get("host") ?? "localhost:3000";
-  const protocol = requestHeaders.get("x-forwarded-proto") ?? (host.startsWith("localhost") ? "http" : "https");
-  const socialImage = `${protocol}://${host}/og-systems.png`;
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+});
 
-  return {
-    title: "Amin — Web Designer & Creative Developer in Dubai",
-    description:
-      "Web design, creative development and product experiences backed by serious software and systems expertise.",
-    keywords: [
-      "software developer Dubai",
-      "web designer Dubai",
-      "creative developer Dubai",
-      "UI UX designer UAE",
-      "digital solutions",
-      "enterprise systems",
-      "digital transformation UAE",
-      "SAP Business One HANA",
-      "IT infrastructure",
-      "React developer",
-      "ecommerce development UAE",
-    ],
-    openGraph: {
-      title: "Amin — Web experiences, designed to work.",
-      description: "Web design, creative development and product experience from Dubai.",
-      type: "website",
-      images: [{ url: socialImage, width: 1200, height: 630, alt: "Amin — Business-critical systems, built well" }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: "Amin — Web experiences, designed to work.",
-      description: "Web design, creative development and product experience from Dubai.",
-      images: [socialImage],
-    },
-  };
-}
+const instrumentSerif = Instrument_Serif({
+  variable: "--font-instrument",
+  subsets: ["latin"],
+  weight: "400",
+  style: ["normal", "italic"],
+});
+
+// Kept in sync with the Vercel prerender through app/site-config.ts.
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
+  title: routeSeo.home.title,
+  description: routeSeo.home.description,
+  applicationName: SITE_NAME,
+  authors: [{ name: owner.name, url: absoluteUrl("/") }],
+  creator: owner.name,
+  keywords: [
+    "designer Dubai",
+    "full-stack developer Dubai",
+    "web designer Dubai",
+    "creative developer UAE",
+    "UI UX designer UAE",
+    "React developer Dubai",
+    "Next.js developer",
+    "ecommerce development UAE",
+    "enterprise systems",
+    "IT infrastructure engineer UAE",
+    "cybersecurity hardening",
+    "SAP Business One HANA",
+  ],
+  alternates: { canonical: absoluteUrl(routeSeo.home.path) },
+  robots: { index: true, follow: true },
+  icons: { icon: "/favicon.svg" },
+  openGraph: {
+    type: "website",
+    url: absoluteUrl(routeSeo.home.path),
+    siteName: SITE_NAME,
+    locale: "en_AE",
+    title: routeSeo.home.ogTitle,
+    description: routeSeo.home.description,
+    images: [{ url: ogImage.url, width: ogImage.width, height: ogImage.height, alt: ogImage.alt }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: routeSeo.home.ogTitle,
+    description: routeSeo.home.description,
+    images: [ogImage.url],
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: THEME_COLOR,
+  colorScheme: "dark",
+};
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>{children}</body>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${unbounded.variable} ${instrumentSerif.variable}`}>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd() }} />
+        {children}
+      </body>
     </html>
   );
 }

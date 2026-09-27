@@ -16,7 +16,13 @@ export type VisualType =
   | "security"
   | "hrms"
   | "browser"
-  | "seo";
+  | "seo"
+  | "storefront"
+  | "brand-3d"
+  | "tickets"
+  | "desktop"
+  | "dispatch"
+  | "social";
 
 export type Project = {
   index: string;
@@ -37,6 +43,8 @@ export type Project = {
   relatedUrlLabel?: string;
   coverAsset?: string;
   coverAlt?: string;
+  conceptAsset?: string;
+  conceptAlt?: string;
   visual: VisualType;
   challenge: string;
   approach: string;
@@ -73,6 +81,8 @@ export const projects: Project[] = [
     ],
     relatedUrl: "https://rswater.ae/",
     relatedUrlLabel: "View public commerce website",
+    conceptAsset: "/projects/alrawdah-platform-concept.webp",
+    conceptAlt: "Concept visual of a mobile mineral-water ordering product on two smartphones",
     visual: "commerce",
     challenge:
       "Bring a fragmented customer ordering journey into one product spanning mobile commerce, account services, fulfilment and administration.",
@@ -107,6 +117,8 @@ export const projects: Project[] = [
       "RAK / Abu Dhabi connectivity",
       "Backup and disaster recovery",
     ],
+    conceptAsset: "/projects/infrastructure-concept.webp",
+    conceptAlt: "Concept visual of a real enterprise server room and infrastructure estate",
     visual: "infrastructure",
     challenge:
       "Rebuild a business-critical infrastructure estate so core services, SAP workloads and branch connectivity could operate within a controlled and recoverable environment.",
@@ -141,6 +153,8 @@ export const projects: Project[] = [
       "Customer reporting",
       "Operational reporting",
     ],
+    conceptAsset: "/projects/sap-systems-concept.webp",
+    conceptAlt: "Concept visual of an operational ERP dashboard inside a mineral-water warehouse",
     visual: "erp",
     challenge:
       "Turn ERP data and operational workflows into reliable controls and reporting for warehouse, inventory, production and management needs.",
@@ -210,6 +224,8 @@ export const projects: Project[] = [
       "Excel export",
       "Arabic / English support",
     ],
+    conceptAsset: "/projects/falcon-crm-concept.webp",
+    conceptAlt: "Concept visual of a private dealership CRM on a laptop in a premium showroom",
     visual: "crm",
     challenge:
       "Give dealership staff one controlled system for customer, vehicle, cash, finance and document records without exposing operational data publicly.",
@@ -244,6 +260,8 @@ export const projects: Project[] = [
       "WhatsApp / WATI integration",
       "Deferred SAP synchronization",
     ],
+    conceptAsset: "/projects/delivery-platform-concept.webp",
+    conceptAlt: "Concept visual of a delivery dispatch desk with route planning and mobile operations",
     visual: "delivery",
     challenge:
       "Support day-to-day delivery operations independently without closing the door on future SAP integration.",
@@ -277,6 +295,8 @@ export const projects: Project[] = [
       "Endpoint hardening",
       "Staged testing and deployment",
     ],
+    conceptAsset: "/projects/cybersecurity-concept.webp",
+    conceptAlt: "Concept visual of an enterprise cybersecurity operations workspace",
     visual: "security",
     challenge:
       "Reduce identity and endpoint risk without introducing uncontrolled policy changes into an operating enterprise environment.",
@@ -310,6 +330,8 @@ export const projects: Project[] = [
       "Late and absence calculations",
       "HR dashboards",
     ],
+    conceptAsset: "/projects/hrms-attendance-concept.webp",
+    conceptAlt: "Concept visual of biometric attendance hardware and an HR operations dashboard",
     visual: "hrms",
     challenge:
       "Turn biometric events and HR rules into dependable attendance calculations and operational visibility.",
@@ -398,6 +420,8 @@ export const projects: Project[] = [
       "Performance",
       "Brand positioning",
     ],
+    conceptAsset: "/projects/seo-transformation-concept.webp",
+    conceptAlt: "Concept visual of a web design and technical SEO performance workstation",
     visual: "seo",
     challenge:
       "Make corporate and commerce websites easier to discover, faster to use and clearer about the businesses they represent.",
@@ -408,20 +432,252 @@ export const projects: Project[] = [
     statusNote:
       "This entry represents a body of client and transformation work. Only the public URLs already identified elsewhere are linked.",
   },
+  {
+    index: "12",
+    slug: "kifaya-streetwear-storefront",
+    title: "Kifaya — Arab Y2K Streetwear Storefront",
+    shortTitle: "Kifaya",
+    shortDescription:
+      "A headless e-commerce storefront for an Arab Y2K streetwear label, built on the Shopify Storefront API with a motion-led React interface.",
+    category: "Web",
+    projectType: "E-commerce Storefront · Headless Shopify",
+    status: "Build / Case Study",
+    statusKind: "case-study",
+    featured: false,
+    role: "Storefront design · Front-end development",
+    technologies: ["Shopify Storefront API", "React", "React Router", "Framer Motion", "Zustand", "Tailwind CSS"],
+    capabilities: [
+      "Headless Shopify storefront",
+      "Storefront API data layer",
+      "Routed React storefront",
+      "Framer Motion interactions",
+      "Zustand client state",
+      "Tailwind styling system",
+    ],
+    visual: "storefront",
+    challenge:
+      "Give an Arab Y2K streetwear label a storefront with a distinct visual attitude while keeping products and commerce data managed in Shopify.",
+    approach:
+      "Separate presentation from commerce: Shopify stays the commerce backend through its Storefront API, while a custom React front end owns layout, routing, motion and state.",
+    solution:
+      "A headless storefront built with React, React Router, Framer Motion, Zustand and Tailwind CSS on top of the Shopify Storefront API.",
+    statusNote:
+      "This is a build presented as a case study. No public deployment is linked from the portfolio.",
+  },
+  {
+    index: "13",
+    slug: "revana-bottled-water-website",
+    title: "Revana — Premium Bottled Water Website",
+    shortTitle: "Revana",
+    shortDescription:
+      "A multi-page website for a premium still and sparkling bottled-water brand, built around a black, white and silver system, motion and 3D.",
+    category: "Web",
+    projectType: "Brand Website · Motion Design · 3D",
+    status: "Build / Case Study",
+    statusKind: "case-study",
+    featured: false,
+    role: "Visual system · Motion · Front-end development",
+    technologies: ["Next.js", "React Three Fiber", "drei", "Motion design", "Arabic font support"],
+    capabilities: [
+      "Multi-page brand website",
+      "Still and sparkling product story",
+      "Black / white / silver visual system",
+      "Motion design",
+      "3D scenes with React Three Fiber and drei",
+      "Arabic font support",
+    ],
+    visual: "brand-3d",
+    challenge:
+      "Present a premium still and sparkling bottled-water brand with the restraint and finish expected of a premium product.",
+    approach:
+      "Hold the whole site to a strict black, white and silver palette, and let motion and real-time 3D carry the product rather than decoration.",
+    solution:
+      "A multi-page Next.js website with a monochrome visual system, motion design, 3D product scenes built with React Three Fiber and drei, and Arabic font support.",
+    statusNote:
+      "This is a build presented as a case study. No public deployment is linked from the portfolio.",
+  },
+  {
+    index: "14",
+    slug: "company-ticket-system",
+    title: "Company Ticket System",
+    shortTitle: "Ticket System",
+    shortDescription:
+      "An internal ticketing system for IT support, delivery issues and employee requests, with role-based access, assignment and reporting.",
+    category: "Enterprise Systems",
+    projectType: "Internal Tool · Service Desk · Full-stack",
+    status: "Internal Tool",
+    statusKind: "private",
+    featured: false,
+    role: "Full-stack development · Access control · Reporting",
+    technologies: ["React", "Vite", "Node.js", "Express", "MySQL 8", "JWT", "Docker Compose"],
+    capabilities: [
+      "IT support tickets",
+      "Delivery issue tickets",
+      "Employee requests",
+      "JWT role-based authentication",
+      "Departments and priorities",
+      "Comments and attachments",
+      "Ticket assignment",
+      "Admin dashboard and reporting",
+    ],
+    visual: "tickets",
+    challenge:
+      "Bring IT support, delivery issues and employee requests into one tracked queue instead of scattered messages.",
+    approach:
+      "Model tickets around departments, priorities and assignment, and protect every action with role-based access.",
+    solution:
+      "A React and Vite front end with a Node / Express API and MySQL 8, JWT role-based authentication, departments, priorities, comments, attachments, assignment and an admin dashboard with reporting, packaged with Docker Compose.",
+    statusNote:
+      "This is an internal tool. No public deployment is claimed.",
+  },
+  {
+    index: "15",
+    slug: "bottle-tracking-system",
+    title: "Bottle Tracking System",
+    shortTitle: "Bottle Tracking",
+    shortDescription:
+      "A desktop application that tracks water-bottle inventory and movements, with charts for day-to-day visibility.",
+    category: "Enterprise Systems",
+    projectType: "Desktop Application · Inventory · Internal Tool",
+    status: "Internal Tool",
+    statusKind: "private",
+    featured: false,
+    role: "Desktop application development · Data visualisation",
+    technologies: ["Electron", "React", "Supabase", "Recharts"],
+    capabilities: [
+      "Bottle inventory tracking",
+      "Bottle movement records",
+      "Desktop application",
+      "Supabase data layer",
+      "Recharts dashboards",
+    ],
+    visual: "desktop",
+    challenge:
+      "Keep an accurate picture of water-bottle inventory and where bottles move.",
+    approach:
+      "Ship it as a focused desktop application backed by a hosted database, with charts that make movement visible at a glance.",
+    solution:
+      "An Electron desktop application built with React and Supabase that records bottle inventory and movements and visualises them with Recharts.",
+    statusNote:
+      "This is an internal tool. No public deployment is claimed.",
+  },
+  {
+    index: "16",
+    slug: "delivery-operations-dispatch-console",
+    title: "Delivery Operations Dispatch Console",
+    shortTitle: "Dispatch Console",
+    shortDescription:
+      "A UAE-wide dispatcher workspace for order ingestion, geofenced driver zones, time-window route optimisation and live map overlays.",
+    category: "Enterprise Systems",
+    projectType: "Operations Software · Geospatial · Route Optimisation",
+    status: "Build / Case Study",
+    statusKind: "case-study",
+    featured: false,
+    role: "Full-stack development · Geospatial data · Optimisation",
+    technologies: ["Next.js", "MapLibre GL", "FastAPI", "PostgreSQL", "PostGIS", "OR-Tools"],
+    capabilities: [
+      "Order ingestion",
+      "Geofenced driver zones",
+      "Route optimisation with time windows",
+      "Street-following route overlays",
+      "Customer location pins",
+      "UAE-wide coverage",
+    ],
+    visual: "dispatch",
+    challenge:
+      "Give dispatchers one workspace to take in orders and plan routes across the UAE.",
+    approach:
+      "Treat location as first-class data: geofenced driver zones and customer pins in PostGIS, route optimisation with time windows in OR-Tools, and a MapLibre map as the working surface.",
+    solution:
+      "A Next.js and MapLibre GL console on a FastAPI and PostgreSQL / PostGIS backend covering order ingestion, geofenced driver zones, OR-Tools route optimisation with time windows, street-following route overlays and customer location pins.",
+    statusNote:
+      "This is a build presented as a case study. No public deployment is claimed.",
+  },
+  {
+    index: "17",
+    slug: "gamerhub-uae",
+    title: "GamerHub UAE",
+    shortTitle: "GamerHub UAE",
+    shortDescription:
+      "A bilingual full-stack social gaming platform with discovery, squads, matchmaking, a feed, notifications and realtime chat.",
+    category: "Products",
+    projectType: "Social Platform · Realtime · Full-stack",
+    status: "Build / Case Study",
+    statusKind: "case-study",
+    featured: false,
+    role: "Full-stack development · Realtime · API design",
+    technologies: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "PostgreSQL", "Socket.io", "JWT", "Zod"],
+    capabilities: [
+      "Player and game discovery",
+      "Squads",
+      "Matchmaking",
+      "Activity feed",
+      "Notifications",
+      "Realtime chat",
+      "Bilingual interface",
+      "Validation and rate limiting",
+    ],
+    visual: "social",
+    challenge:
+      "Give players in the UAE one bilingual place to discover each other, form squads and talk in real time.",
+    approach:
+      "Pair a REST API for the social graph with Socket.io for realtime chat, and validate and rate-limit every entry point.",
+    solution:
+      "A React, Vite and Tailwind front end with a Node / Express and PostgreSQL backend, Socket.io realtime chat, JWT authentication, Zod validation and rate limiting, covering discovery, squads, matchmaking, feed and notifications.",
+    statusNote:
+      "This is a build presented as a case study. No public deployment is claimed.",
+  },
+];
+
+export type LabExperiment = {
+  slug: string;
+  title: string;
+  summary: string;
+  technologies: string[];
+  note: string;
+};
+
+/** Experiments live in the Lab, not in the case-study index. */
+export const labExperiments: LabExperiment[] = [
+  {
+    slug: "trading-terminal-experiment",
+    title: "Real-time trading terminal",
+    summary:
+      "A real-time trading interface on the Binance WebSocket API, charted with TradingView Lightweight Charts, with a built-in assistant that computes RSI, trend and momentum on the live data.",
+    technologies: ["Binance WebSocket API", "TradingView Lightweight Charts", "RSI · trend · momentum"],
+    note: "Interface experiment · not a financial product",
+  },
 ];
 
 const featuredProjectOrder = [
-  "alrawdah-public-commerce-website",
-  "sahaba-water",
-  "haak-solutions",
   "alrawdah-digital-commerce-platform",
-  "falcon-crm",
+  "alrawdah-public-commerce-website",
   "infrastructure-disaster-recovery-transformation",
+  "falcon-crm",
+  "haak-solutions",
+  "independent-delivery-management-platform",
 ];
 
 export const featuredProjects = featuredProjectOrder
   .map((slug) => projects.find((project) => project.slug === slug))
   .filter((project): project is Project => Boolean(project));
+
+export const getProject = (slug: string) => projects.find((project) => project.slug === slug);
+
+/** Intrinsic sizes of the raster assets, so every image reserves its space (no layout shift). */
+export const imageSizes: Record<string, { width: number; height: number }> = {
+  "/projects/rs-water.png": { width: 1272, height: 716 },
+  "/projects/haak.png": { width: 1265, height: 712 },
+  "/projects/sahaba.png": { width: 1265, height: 712 },
+  "/projects/alrawdah-platform-concept.webp": { width: 760, height: 505 },
+  "/projects/infrastructure-concept.webp": { width: 760, height: 505 },
+  "/projects/sap-systems-concept.webp": { width: 760, height: 505 },
+  "/projects/falcon-crm-concept.webp": { width: 760, height: 505 },
+  "/projects/delivery-platform-concept.webp": { width: 760, height: 505 },
+  "/projects/cybersecurity-concept.webp": { width: 760, height: 505 },
+  "/projects/hrms-attendance-concept.webp": { width: 760, height: 505 },
+  "/projects/seo-transformation-concept.webp": { width: 760, height: 505 },
+};
 
 export const projectCategories: Array<"All" | ProjectCategory> = [
   "All",

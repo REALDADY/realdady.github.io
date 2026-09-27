@@ -10,7 +10,11 @@ import tseslint from "typescript-eslint";
 const eslintConfig = defineConfig([
   globalIgnores([
     ".next/**",
+    ".vinext/**",
+    ".wrangler/**",
     "dist/**",
+    "vercel-dist/**",
+    "outputs/**",
     "out/**",
     "build/**",
     "next-env.d.ts",
@@ -23,6 +27,10 @@ const eslintConfig = defineConfig([
   jsxA11y.flatConfigs.recommended,
   next.configs["core-web-vitals"],
   {
+    rules: {
+      "@next/next/no-html-link-for-pages": "off",
+      "@next/next/no-img-element": "off",
+    },
     languageOptions: {
       globals: {
         ...globals.browser,

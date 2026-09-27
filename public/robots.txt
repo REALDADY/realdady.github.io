@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amin-built-to-operate.vercel.app/sitemap.xml

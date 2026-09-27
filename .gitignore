@@ -36,7 +36,10 @@ yarn-error.log*
 
 /dist/
 /vercel-dist/
+/.vercel-prerender/
 /.wrangler/
 /outputs/
 /work/
 *.tsbuildinfo
+.codex-dev.*.log
+.codex-lighthouse.*.log
