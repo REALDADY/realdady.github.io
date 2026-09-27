@@ -23,7 +23,8 @@ jobs:
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
+      # The lockfile is generated on Windows; npm install adds the Linux-only native packages.
+      - run: npm install --no-audit --no-fund
       - name: Build the prerendered static site
         run: npm run build:vercel
         env:
